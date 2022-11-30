@@ -13,6 +13,7 @@
     <link rel="stylesheet" href="assets/css/slick-theme.min.css">
     <link rel="stylesheet" href="assets/css/style.css">
     <link rel="stylesheet" href="assets/css/responsive.css">
+
 </head>
 
 <body class="bg-body">
@@ -143,12 +144,10 @@
                 <div class="col-lg-6">
                     <div class="photography-title-inner">
                         <h2 class="main-title">
-                            Contact <span class="text-main">Us</span>
+                            Get In <span class="text-main">Touch</span>
                         </h2>
                     </div>
-                    <p>We respond very fast! Fill up the following Inquiry Form to get a Quote or for any other query
-                        regarding your Function.</p>
-                    <img src="assets/images/contact.jpg" alt="contact" class="contact-img" />
+                    <!-- <img src="assets/images/contact.jpg" alt="contact" class="contact-img" /> -->
                     <p>FlashOn Studio is a brand which stills your emotions and moves your Cadid Moments. Experience a
                         level of quality &
                         professionalism born out of our years of experience, study and observation that will go far
@@ -160,6 +159,35 @@
                         Destination Wedding, Royal Candid Wedding or Romantic Pre-Wedding Shoot into the natural stream
                         of emotions
                         and glad. So that, you can relish your own story thourghout your time ahead.</p>
+                    <p>We respond very fast! Fill up the following Inquiry Form to get a Quote or for any other query
+                        regarding your Function.</p>
+                </div>
+                <div class="col-lg-6">
+                    <form action="" class="contact-form" autocomplete="off" name="contact-form">
+                        <div class="form-group">
+                            <label for="fullName">Full Name</label>
+                            <input type="text" class="form-control" id="fullName" name="fullName"
+                                placeholder="Enter your full name" />
+                        </div>
+                        <div class="form-group">
+                            <label for="email">Email Id</label>
+                            <input type="email" class="form-control" id="email" name="email"
+                                placeholder="Enter your email id" />
+                        </div>
+                        <div class="form-group">
+                            <label for="phoneno">Phone No</label>
+                            <input type="text" class="form-control" id="phoneno" name="phoneno"
+                                placeholder="Enter your phone number" />
+                        </div>
+                        <div class="form-group">
+                            <label for="message">Message</label>
+                            <textarea class="form-control" id="message" name="message" placeholder="How can I help you?"
+                                rows="5"></textarea>
+                        </div>
+                        <div class="form-group">
+                            <button class="btn btn-1" onclick="sendMail()">SUBMIT</button>
+                        </div>
+                    </form>
                 </div>
             </div>
         </div>
@@ -217,6 +245,43 @@
     <script src="assets/js/slick.min.js"></script>
     <script src="assets/js/custom.js"></script>
 
+
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js">
+    </script>
+
+
+
+    <script type="text/javascript">
+        function sendMail() {
+            var params = {
+                name: document.getElementById("fullName").value,
+                email: document.getElementById("email").value,
+                message: document.getElementById("phoneno").value,
+                message: document.getElementById("message").value,
+            };
+
+            const serviceID = "service_a4h0o1b";
+            const templateID = "template_wj8imc6";
+
+            emailjs.send(serviceID, templateID, params)
+                .then(res => {
+                    document.getElementById("fullName").value = "";
+                    document.getElementById("email").value = "";
+                    document.getElementById("phoneno").value = "";
+                    document.getElementById("message").value = "";
+                    console.log(res);
+                    alert("Your message sent successfully!!")
+
+                })
+                .catch(err => console.log(err));
+
+        }
+    </script>
+    <script type="text/javascript">
+        (function () {
+            emailjs.init("FVYi3J20B0DF4Y5A7");
+        })();
+    </script>
 </body>
 
 </html>
